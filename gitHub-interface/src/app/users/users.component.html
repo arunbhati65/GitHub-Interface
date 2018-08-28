@@ -1,3 +1,13 @@
-<h1>Hello</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Hello Welcome to HitHub Interface</h1>
+        </div>
+        <div class="col-md-12">
+            <h1 *ngFor="let user of usersArray">{{user.login}}</h1>
+        </div>
+    </div>
+</div>
 
+<input type="text" class="form-control" (input)="onInputName($event)">
 <button type="button" (click)="onGet()">Submit</button>

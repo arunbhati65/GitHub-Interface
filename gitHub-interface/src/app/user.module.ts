@@ -18,4 +18,4 @@ import { ServerService } from './users.service';
   providers: [ServerService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModuleMine { }
