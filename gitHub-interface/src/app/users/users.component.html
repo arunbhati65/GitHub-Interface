@@ -1,13 +1,42 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Hello Welcome to HitHub Interface</h1>
-        </div>
-        <div class="col-md-12">
-            <h1 *ngFor="let user of usersArray">{{user.login}}</h1>
-        </div>
-    </div>
-</div>
 
 <input type="text" class="form-control" (input)="onInputName($event)">
 <button type="button" (click)="onGet()">Submit</button>
+
+<div>
+        <table>
+          <thead>
+            <tr>
+              
+        <select class='select-option' required [(ngModel)]='optionSelected' (ngModelChange)='onOptionsSelected($event)'>
+         <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
+        </select>
+
+              <th [class.active]="order === 'login'"
+                  (click)="setOrder('login')"
+                  class="mdl-data-table__cell--non-numeric"> Name 
+                  <span [hidden]="reverse">▼</span>
+                  <span [hidden]="!reverse">▲</span>
+              </th>
+              
+              <th [class.active]="order === 'score'"
+                (click)="setOrder('score')"
+                class="mdl-data-table__cell--non-numeric"> Rank 
+                <span [hidden]="reverse">▼</span>
+                <span [hidden]="!reverse">▲</span>
+              </th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of usersArray | paginate: { itemsPerPage: 10, currentPage: p }| orderBy: order:reverse:'case-insensitive'">
+             
+              <td>{{ user.login }}</td>
+              <td>{{ user.score }}</td>
+             
+              
+            </tr>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </tbody>
+          </table>
+        </div>

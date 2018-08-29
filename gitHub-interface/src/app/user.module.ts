@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './users/users.component';
 import { ServerService } from './users.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,7 @@ import { ServerService } from './users.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,NgxPaginationModule,OrderModule
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]
