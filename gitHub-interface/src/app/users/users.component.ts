@@ -14,6 +14,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 export class AppComponent {
  
   //users : User[];
+  p: number = 1;
   coderName ='';
   usersArray : User[];
   sortedUsersArray : User[];
@@ -27,6 +28,8 @@ export class AppComponent {
   options = ['Sort By Name','Sort by Rank'];
   optionSelected: any;
 
+
+  
 onOptionsSelected(event : Event){
  console.log(event); //option value will be sent as event
 }
@@ -49,17 +52,11 @@ onOptionsSelected(event : Event){
     this.coderName=(<HTMLInputElement>event.target).value;
   }
 
-  // onGet() {
-  //   console.log("OnGet")
-  //   this.serverService.getUsers(this.coderName)
-  //     .subscribe(
-  //       (users: any) => console.log(users)
-  //     );
-  // }
+  
   onGet() {
 
-   // this.search.next(this.coderName);
 
+    console.log("hi i reached successfully");
     this.serverService.getUsers(this.coderName)
     .subscribe(
 
@@ -70,10 +67,7 @@ onOptionsSelected(event : Event){
         this.usersArray=this.packet.items;
 
 
-     //  console.log(userResultArray);
-    //  //   this.usersArray=JSON.parse(userResultArray['_body']);
-    //   this.usersArray=userResultArray.item
-    //  console.log(this.usersArray);
+    
       }
 
     )

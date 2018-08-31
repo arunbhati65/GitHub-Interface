@@ -1,0 +1,57 @@
+<div class="panel-heading pointerCursor">
+    <h3 class="panel-title">{{user.login}}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="col-xs-10">
+      <div class="row vertical-align">
+
+        <div class="col-xs-4">
+           <img  class="imageClass" src={{user.avatar_url}}/>
+        </div>
+
+        <div class="col-xs-8">
+           <div class="row">
+             <div class="col-xs-6">
+               Profile URL:
+             </div>
+             <div class="col-xs-6">
+                :  {{user.url}} 
+               </div>
+           </div>
+
+           <div class="row">
+               <div class="col-xs-6">
+                 Score:
+               </div>
+               <div class="col-xs-6">
+                  : {{user.score}} 
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col-xs-6">
+                   Site Admin:
+                 </div>
+                 <div class="col-xs-6">
+                    : {{user.site_admin}} 
+                   </div>
+               </div>
+              
+               <!-- <p *ngIf="!showDetails">
+                  <input type="button" value="Hide Details" (click)="onHideDetails()" style="float: right;">
+                 </p> -->
+                 
+                    <!-- <input type="button" value="Show Details" (click)="onHideDetails()" style="float: right;"> -->
+                   
+               
+               <input type="button" value="Show/Hide Details" (click)="onShowHideDetails()" style="float: right;">
+               <div *ngIf="showDetails">
+                 <app-display-repo  [user]="user"></app-display-repo>
+               </div>
+                
+              
+        </div>
+   
+    </div>
+
+  </div>
+</div>

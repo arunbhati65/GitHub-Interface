@@ -7,10 +7,14 @@ import { AppComponent } from './users/users.component';
 import { ServerService } from './users.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
+import { DisplayRepoComponent } from './user/display-repo/display-repo.component';
+import { DisplayUserComponent } from './display-user/display-user.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DisplayRepoComponent,
+    DisplayUserComponent
   ],
   imports: [
     BrowserModule,
