@@ -1,5 +1,23 @@
-<input type="text" class="form-control" (input)="onInputName($event)">
-<button type="button" (click)="onGet()">Submit</button>
+
+
+<div>
+    <input  type="text"  (input)="onInputName($event)" placeholder="Type the Name">
+    <button  type="button" (click)="onGet()">Submit</button>
+
+    <th align="left" [class.active]="order === 'login'"
+              (click)="setOrder('login')"
+              class="mdl-data-table__cell--non-numeric"> Name 
+              <span [hidden]="reverse">(A - Z)      :: </span>
+              <span [hidden]="!reverse">(Z - A)     :: </span>
+    </th>
+    <th align="right" [class.active]="order === 'score'"
+    (click)="setOrder('score')"
+    class="mdl-data-table__cell--non-numeric"> Rank 
+    <span [hidden]="reverse">▼</span>
+    <span [hidden]="!reverse">▲</span>
+  </th>
+</div>
+
 
         <!-- <h1>Total Count :: {{packet.total_count?}}</h1> -->
 
@@ -24,8 +42,8 @@
           </th>
            </div> -->
            <!-- | orderBy: order:reverse:'case-insensitive' -->
-
- <div class="panel panel-primary" *ngFor="let user of usersArray |paginate: { itemsPerPage: 10, currentPage: p }"  >
+           
+ <div class="panel panel-primary" *ngFor="let user of usersArray |paginate: { itemsPerPage: 5, currentPage: p }| orderBy: order:reverse:'case-insensitive'"  >
     
     <app-display-user [user]="user"></app-display-user>
     

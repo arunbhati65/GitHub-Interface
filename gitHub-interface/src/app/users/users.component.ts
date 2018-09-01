@@ -14,7 +14,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 export class AppComponent {
  
   //users : User[];
-  p: number = 1;
+  
   coderName ='';
   usersArray : User[];
   sortedUsersArray : User[];

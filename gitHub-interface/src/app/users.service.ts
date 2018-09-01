@@ -21,9 +21,7 @@ export class ServerService {
     return this.http.get('https://api.github.com/search/users?q='+name)
     .pipe(
       tap(
-        // (response : Response)=>{
-        //   return <User[]>response.json();
-        // }
+       
         (response : Response) =>{
           response.json() as Packet;
           return response;
@@ -35,13 +33,11 @@ export class ServerService {
   }
 
   getRepos(userName :String){
-    console.log('https://api.github.com/users/'+userName+'/repos')
+   
     return this.http.get('https://api.github.com/users/'+userName+'/repos')
     .pipe(
       tap(
-        // (response : Response)=>{
-        //   return <User[]>response.json();
-        // }
+       
         (response : Response) =>{
           response.json() as Repo[];
           console.log(response);
