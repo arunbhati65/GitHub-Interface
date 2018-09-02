@@ -1,52 +1,60 @@
 
-
 <div>
-    <input  type="text"  (input)="onInputName($event)" placeholder="Type the Name">
-    <button  type="button" (click)="onGet()">Submit</button>
 
-    <th align="left" [class.active]="order === 'login'"
-              (click)="setOrder('login')"
-              class="mdl-data-table__cell--non-numeric"> Name 
-              <span [hidden]="reverse">(A - Z)      :: </span>
-              <span [hidden]="!reverse">(Z - A)     :: </span>
-    </th>
-    <th align="right" [class.active]="order === 'score'"
-    (click)="setOrder('score')"
-    class="mdl-data-table__cell--non-numeric"> Rank 
-    <span [hidden]="reverse">▼</span>
-    <span [hidden]="!reverse">▲</span>
-  </th>
+    
+  <div  class="navbar navbar-default navbar-fixed-top" >
+    <div class="container-fluid">
+      
+
+      <div class="collapse navbar-collapse" >
+          
+              <ul class="nav navbar-nav navbar-right">
+                  <div class="row">
+                      <div class="col-xs-12">
+                        <div class="btn-group"  addDropdown>
+                          <button type="button" class="btn btn-primary dropdown-toggle">
+                            Sort  <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><th align="left" [class.active]="order === 'login'"
+                              (click)="setOrder('login')"
+                              class="mdl-data-table__cell--non-numeric"> Name 
+                              <span [hidden]="reverse">(A - Z)      :: </span>
+                              <span [hidden]="!reverse">(Z - A)     :: </span>
+                        </th></li>
+                            <li><th align="right" [class.active]="order === 'score'"
+                              (click)="setOrder('score')"
+                              class="mdl-data-table__cell--non-numeric"> Rank 
+                              <span [hidden]="reverse">▼</span>
+                              <span [hidden]="!reverse">▲</span>
+                              </th></li>
+                           
+                          </ul>
+                  
+                        </div>
+                      </div>
+                    </div>
+            
+                </ul>
+                <ul   class="nav navbar-nav navbar-right">
+                    <input   type="text" size="90" (input)="onGet($event)" placeholder="Search..">
+                  </ul>
+         
+      </div>
+    </div>
+
+
+      
 </div>
 
 
-        <!-- <h1>Total Count :: {{packet.total_count?}}</h1> -->
-
-        <!-- <select class='select-option' required [(ngModel)]='optionSelected' (ngModelChange)='onOptionsSelected($event)'>
-            <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
-           </select>
-   
-   
-           <div>
-              <th [class.active]="order === 'login'"
-              (click)="setOrder('login')"
-              class="mdl-data-table__cell--non-numeric"> Name 
-              <span [hidden]="reverse">▼</span>
-              <span [hidden]="!reverse">▲</span>
-          </th>
-          
-          <th [class.active]="order === 'score'"
-            (click)="setOrder('score')"
-            class="mdl-data-table__cell--non-numeric"> Rank 
-            <span [hidden]="reverse">▼</span>
-            <span [hidden]="!reverse">▲</span>
-          </th>
-           </div> -->
-           <!-- | orderBy: order:reverse:'case-insensitive' -->
-           
- <div class="panel panel-primary" *ngFor="let user of usersArray |paginate: { itemsPerPage: 5, currentPage: p }| orderBy: order:reverse:'case-insensitive'"  >
-    
+<br />
+<br />
+<br />
+<br /> 
+  <h1>Total Count :: {{totalUsers}}</h1>  
+ <div class="panel panel-primary" *ngFor="let user of usersArray |paginate: { itemsPerPage: 5, currentPage: p }| orderBy: order:reverse:'case-insensitive'">
     <app-display-user [user]="user"></app-display-user>
-    
-</div> 
-
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div > 
+<pagination-controls *ngIf="noUser" (pageChange)="p = $event"></pagination-controls>
+</div>

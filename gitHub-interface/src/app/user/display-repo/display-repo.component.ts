@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../user.model';
+
 import { ServerService } from '../../users.service';
-import { Repo } from '../repo.model';
+import { User } from '../../models/user.model';
+import { Repo } from '../../models/repo.model';
+
 @Component({
   selector: 'app-display-repo',
   templateUrl: './display-repo.component.html',

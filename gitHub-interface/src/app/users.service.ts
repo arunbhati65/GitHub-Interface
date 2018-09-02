@@ -4,21 +4,20 @@ import { Headers, Http, Response } from '@angular/http';
 import { catchError, map, tap, retry } from 'rxjs/operators';
 //import 'rxjs/Rx';
 import { Observable } from 'rxjs';
-import { User } from './user/user.model';
-import { Packet } from './user/packet.model';
-import { Repo } from './user/repo.model';
+import { Packet } from './models/packet.model';
+import { Repo } from './models/repo.model';
+
 
 @Injectable()
 export class ServerService {
-
+  pageNumber : Number =0;
+  pageSize : Number = 100;
   
   constructor(private http: Http) {}
   
 
-
-
   getUsers(name :String){
-    return this.http.get('https://api.github.com/search/users?q='+name)
+    return this.http.get('https://api.github.com/search/users?q='+name+'&page=' + this.pageNumber+'&per_page=' + this.pageSize)
     .pipe(
       tap(
        

@@ -9,12 +9,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
 import { DisplayRepoComponent } from './user/display-repo/display-repo.component';
 import { DisplayUserComponent } from './display-user/display-user.component';
+import { DropDownDirective } from './directives/dropDown.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayRepoComponent,
-    DisplayUserComponent
+    DisplayUserComponent,DropDownDirective
   ],
   imports: [
     BrowserModule,

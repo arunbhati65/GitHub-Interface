@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { Response } from '@angular/http';
 
 import { ServerService } from '../users.service';
-import { User } from '../user/user.model';
+
 import {Subject} from "rxjs";
-import { Packet } from '../user/packet.model';
+
 import { OrderPipe } from 'ngx-order-pipe';
+import { User } from '../models/user.model';
+import { Packet } from '../models/packet.model';
 @Component({
   selector: 'app-root',
   templateUrl: './users.component.html',
@@ -13,6 +15,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 })
 export class AppComponent {
  
+  noUser: boolean=false;
   //users : User[];
   
   coderName ='';
@@ -20,7 +23,7 @@ export class AppComponent {
   sortedUsersArray : User[];
   order: string = 'info.name';
   reverse: boolean = false;
-
+  totalUsers=0;
   packet :Packet;
   search: Subject<string> = new Subject<string>();
 
@@ -29,7 +32,6 @@ export class AppComponent {
   optionSelected: any;
 
 
-  
 onOptionsSelected(event : Event){
  console.log(event); //option value will be sent as event
 }
@@ -37,6 +39,7 @@ onOptionsSelected(event : Event){
   constructor(private serverService: ServerService,private orderPipe: OrderPipe) {
     this.sortedUsersArray=orderPipe.transform(this.usersArray,'info.name');
   }
+
 
 
   setOrder(value: string) {
@@ -47,14 +50,9 @@ onOptionsSelected(event : Event){
     this.order = value;
   }
 
-
-  onInputName(event :Event){
-    this.coderName=(<HTMLInputElement>event.target).value;
-  }
-
   
-  onGet() {
-
+  onGet(event :Event) {
+    this.coderName=(<HTMLInputElement>event.target).value;
 
     console.log("hi i reached successfully");
     this.serverService.getUsers(this.coderName)
@@ -65,6 +63,10 @@ onOptionsSelected(event : Event){
         console.log("hi packet");
         console.log(this.packet);
         this.usersArray=this.packet.items;
+        this.totalUsers=this.usersArray.length;
+        if(this.totalUsers==0){
+          this.noUser=true;
+        }
 
 
     
